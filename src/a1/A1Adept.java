@@ -2,8 +2,6 @@ package a1;
 
 import java.util.Scanner;
 
-import a1.A1Jedi.StoreItems;
-
 public class A1Adept {
 	
 	public class Customers {
@@ -24,15 +22,16 @@ public class A1Adept {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		process(scan);
+		 new A1Adept().process(scan);
 	}
 	
-	public static void process(Scanner s) {
+	public void process(Scanner s) {
 		int numOfStoreItems = s.nextInt();
 		
 		StoreItems[] storeItems = new StoreItems[numOfStoreItems];
 		
 		for (int i = 0; i < numOfStoreItems; i++) {
+			storeItems[i] = new StoreItems();
 			storeItems[i].name = s.next();
 			storeItems[i].price = s.nextDouble();
 		}
@@ -43,6 +42,7 @@ public class A1Adept {
 		double total = 0;
 		
 		for (int i = 0; i < numOfCusts; i++) {
+			customers[i] = new Customers();
 			customers[i].firstName = s.next();
 			customers[i].lastName = s.next();
 			customers[i].totalItems = s.nextInt();
