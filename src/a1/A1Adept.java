@@ -2,7 +2,24 @@ package a1;
 
 import java.util.Scanner;
 
+import a1.A1Jedi.StoreItems;
+
 public class A1Adept {
+	
+	public class Customers {
+		double totalCost;
+		String firstName;
+		String lastName;
+		int totalItems;
+		StoreItems[] items;
+	}
+	
+	public class StoreItems {
+		int count;
+		String name;
+		double price;
+	}
+
 
 	public static void main(String[] args) {
 		

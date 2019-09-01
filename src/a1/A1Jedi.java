@@ -3,16 +3,30 @@ package a1;
 import java.util.Scanner;
 
 public class A1Jedi {
+	
+	public class Customers {
+		double totalCost;
+		String firstName;
+		String lastName;
+		int totalItems;
+		StoreItems[] items;
+	}
+	
+	public class StoreItems {
+		int count;
+		String name;
+		double price;
+	}
 
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
 
-		process(scan);
+		new A1Jedi().process(scan);
 		
 	}
 	
-	public static void process(Scanner s) {
+	public  void process(Scanner s) {
 		int numOfStoreItems = s.nextInt();
 		
 		StoreItems[] storeItems = new StoreItems[numOfStoreItems];
