@@ -34,7 +34,7 @@ public class A1Adept {
 			
 			double fullCost = 0;
 			
-			for (int j = 0; j < numOfItems; j++) {
+			for (int j = 0; j < totalItemsBought; j++) {
 				int quantity = s.nextInt();
 				String name = s.next();
 			
@@ -44,14 +44,15 @@ public class A1Adept {
 					}
 				}
 			}	
-				finalCost[i] = fullCost;
+			finalCost[i] = fullCost;
 		}
 		
-		double max = finalCost[0];
-		double  min = finalCost[0];
-		double value = finalCost[0];
 		int maxIndex =  0;
 		int minIndex = 0;
+		double max = finalCost[0];
+		double  min = finalCost[0];
+		double value = 0;
+		
 		
 	
 		for (int i =0; i < numOfCusts; i++) {
@@ -64,13 +65,18 @@ public class A1Adept {
 				min = finalCost[i];
 				minIndex = i;	
 			}
-			
-			value += finalCost[i];
 		}
 		
-		System.out.println("Biggest: " + firstName[maxIndex] + " (" + max + ")" );
-		System.out.println("Smallest: " + firstName[minIndex] + " (" + min + ")" );
-		System.out.println("Average: " + value / numOfCusts);
+		for (int i = 0; i < numOfCusts; i++) {
+			value += finalCost[i];
+		}
+		String maxString = String.format("%,.2f", finalCost[maxIndex]);
+		String minString = String.format("%,.2f", finalCost[minIndex]);
+		String average = String.format("%,.2f", value/numOfCusts);
+		
+		System.out.println("Biggest: " + firstName[maxIndex] + " " + lastName[maxIndex] + " (" + maxString + ")" );
+		System.out.println("Smallest: " + firstName[minIndex] + " " + lastName[maxIndex] + " (" + minString + ")" );
+		System.out.println("Average: " + average);
 	}
 }
 	
