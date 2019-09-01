@@ -75,7 +75,7 @@ public class A1Adept {
 		String average = String.format("%,.2f", value/numOfCusts);
 		
 		System.out.println("Biggest: " + firstName[maxIndex] + " " + lastName[maxIndex] + " (" + maxString + ")" );
-		System.out.println("Smallest: " + firstName[minIndex] + " " + lastName[maxIndex] + " (" + minString + ")" );
+		System.out.println("Smallest: " + firstName[minIndex] + " " + lastName[minIndex] + " (" + minString + ")" );
 		System.out.println("Average: " + average);
 	}
 }

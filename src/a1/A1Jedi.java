@@ -37,7 +37,6 @@ public class A1Jedi {
 			storeItems[i].price = s.nextDouble();
 		}
 		
-		boolean [] sameItem = new boolean[numOfStoreItems];
 		int [] customersPerItem= new int[numOfStoreItems];
 		int numOfCusts = s.nextInt();
 		Customers[] customers = new Customers[numOfCusts];
@@ -46,8 +45,8 @@ public class A1Jedi {
 		customers[i].firstName = s.next();
 		customers[i].lastName = s.next();
 		customers[i].totalItems = s.nextInt();
-			
-			
+		
+		int[] sameItem = new int[numOfStoreItems];
 			
 			customers[i].items = new StoreItems[customers[i].totalItems];
 			for  (int j = 0; j < customers[i].totalItems; j++) {
@@ -60,12 +59,13 @@ public class A1Jedi {
 				for (int k = 0; k < numOfStoreItems; k++ ) {
 					if (customers[i].items[j].name.contentEquals(storeItems[k].name)) {
 						storeItems[k].count += customers[i].items[j].count;
+						sameItem[k]++;
+						if (sameItem[k] <= 1) {
 						customersPerItem[k]++;
-						
 						}
 					}
 				}
-			
+			}
 		}
 		for (int i = 0; i < numOfStoreItems; i++) {
 			System.out.println(
