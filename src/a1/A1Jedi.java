@@ -26,12 +26,12 @@ public class A1Jedi {
 		int numOfCusts = s.nextInt();
 		Customers[] customers = new Customers[numOfCusts];
 		for (int i = 0; i < numOfCusts; i++) {
-//			customers[i] = new Customers();
-//			customers[i].firstName = s.next();
-//			customers[i].lastName = s.next();
-//			customers[i].totalItems = s.nextInt();
+		customers[i] = new Customers();
+		customers[i].firstName = s.next();
+		customers[i].lastName = s.next();
+		customers[i].totalItems = s.nextInt();
 			
-			customers[i] = new Customers(0, s.next(),s.next() ,s.nextInt(),null);
+			
 			
 			customers[i].items = new StoreItems[customers[i].totalItems];
 			for  (int j = 0; j < customers[i].totalItems; j++) {
