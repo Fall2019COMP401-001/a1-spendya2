@@ -23,8 +23,6 @@ public class A1Adept {
 		int numOfCusts = s.nextInt();
 		Customers[] customers = new Customers[numOfCusts];
 		
-		
-		
 		double total = 0;
 		
 		for (int i = 0; i < numOfCusts; i++) {

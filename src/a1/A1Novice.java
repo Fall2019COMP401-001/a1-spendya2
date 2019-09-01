@@ -17,9 +17,10 @@ public class A1Novice {
 				double total = 0;
 				String firstName = s.next();
 				String lastName = s.next();
-				int groceries = s.nextInt();
-				for (int j = 0; j < groceries; j++) {
-					int quantity = s.nextInt();
+				int quantity = s.nextInt();
+				StoreItems[] groceries = new StoreItems[quantity];
+				for (int j = 0; j < quantity; j++) {
+					
 					String itemName = s.next();
 					double price = s.nextDouble();
 					double cost = price * quantity;
