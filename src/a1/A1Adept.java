@@ -3,86 +3,75 @@ package a1;
 import java.util.Scanner;
 
 public class A1Adept {
-	
-	public class Customers {
-		double totalCost;
-		String firstName;
-		String lastName;
-		int totalItems;
-		StoreItems[] items;
-	}
-	
-	public class StoreItems {
-		int count;
-		String name;
-		double price;
-	}
-
 
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		 new A1Adept().process(scan);
+		process(scan);
 	}
 	
-	public void process(Scanner s) {
-		int numOfStoreItems = s.nextInt();
+	public static void process(Scanner s) {
+		int numOfItems = s.nextInt();
+		String[] itemName = new  String[numOfItems];
+		double[] itemPrice = new double[numOfItems];
 		
-		StoreItems[] storeItems = new StoreItems[numOfStoreItems];
-		
-		for (int i = 0; i < numOfStoreItems; i++) {
-			storeItems[i] = new StoreItems();
-			storeItems[i].name = s.next();
-			storeItems[i].price = s.nextDouble();
+		for (int i = 0; i < numOfItems; i++) {
+			itemName[i] = s.next();
+			itemPrice[i] = s.nextDouble();
 		}
 		
 		int numOfCusts = s.nextInt();
-		Customers[] customers = new Customers[numOfCusts];
+		String[] firstName = new String[numOfCusts];
+		String[] lastName = new String[numOfCusts];
 		
-		double total = 0;
+		double[] finalCost = new double[numOfCusts];
 		
 		for (int i = 0; i < numOfCusts; i++) {
-			customers[i] = new Customers();
-			customers[i].firstName = s.next();
-			customers[i].lastName = s.next();
-			customers[i].totalItems = s.nextInt();
-		
-			for  (int j = 0; j < customers[i].totalItems; j++) {
+			firstName[i] = s.next();
+			lastName[i] = s.next();
+			
+			int totalItemsBought = s.nextInt();
+			
+			double fullCost = 0;
+			
+			for (int j = 0; j < numOfItems; j++) {
 				int quantity = s.nextInt();
-				String itemName = s.next();
-				for (int k = 0; k < numOfStoreItems; k++) {
-					if (itemName.contentEquals(storeItems[k].name)) {
-						double cost = quantity * storeItems[k].price;
-						total += cost;
+				String name = s.next();
+			
+				for (int k = 0; k < numOfItems; k++) {
+				if (name.contentEquals(itemName[k])) {
+					fullCost += quantity * itemPrice[k];
 					}
 				}
-			}
+			}	
+				finalCost[i] = fullCost;
 		}
 		
-		for (int i = 0; i < customers[i].totalItems; i++) {
-			customers[i].totalCost = total;
-			double maxCost = customers[i].totalCost;
-			String maxName = customers[i].firstName + customers[i].lastName;
-			for (int j = 0; j < numOfCusts; j++) {
-				if (customers[j].totalCost > customers[j+1].totalCost) {
-					maxCost = customers[j].totalCost;
-					maxName = customers[j].firstName + " " + customers[j].lastName;
-				}
+		double max = finalCost[0];
+		double  min = finalCost[0];
+		double value = finalCost[0];
+		int maxIndex =  0;
+		int minIndex = 0;
+		
+	
+		for (int i =0; i < numOfCusts; i++) {
+			if (finalCost[i] > max) {
+				max = finalCost[i];
+				maxIndex = i;
 			}
-			System.out.println("Biggest: " + maxName + " (" + maxCost + ")" );
+			
+			if (finalCost[i] < min) {
+				min = finalCost[i];
+				minIndex = i;	
+			}
+			
+			value += finalCost[i];
 		}
 		
-		for (int i = 0; i < customers[i].totalItems; i++) {
-			double minCost = customers[i].totalCost;
-			String minName = customers[i].firstName + customers[i].lastName;
-			for (int j = 0; j < numOfCusts; j++) {
-				if (customers[j].totalCost < customers[j+1].totalCost) {
-					minCost = customers[j].totalCost;
-					minName = customers[j].firstName + " " + customers[j].lastName;
-				}
-				System.out.println("Smallest: " + minName + " (" + minCost + ")" );
-			}
-		}
+		System.out.println("Biggest: " + firstName[maxIndex] + " (" + max + ")" );
+		System.out.println("Smallest: " + firstName[minIndex] + " (" + min + ")" );
+		System.out.println("Average: " + value / numOfCusts);
 	}
 }
+	
 
